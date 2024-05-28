@@ -7,4 +7,9 @@
         <Nullable>enable</Nullable>
     </PropertyGroup>
 
-</Project>
+    <ItemGroup>
+        <Compile Include="C:\Users\Nani\RiderProjects\ConsoleApp1\Intermediate.cs" />
+        <!-- <Compile Include="C:\Users\Nani\RiderProjects\ConsoleApp1\Basics.cs" /> -->
+      </ItemGroup>
+  
+  </Project>
