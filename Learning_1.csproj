@@ -7,9 +7,18 @@
         <Nullable>enable</Nullable>
     </PropertyGroup>
 
+    
     <ItemGroup>
         <Compile Include="C:\Users\Nani\RiderProjects\ConsoleApp1\Intermediate.cs" />
         <!-- <Compile Include="C:\Users\Nani\RiderProjects\ConsoleApp1\Basics.cs" /> -->
       </ItemGroup>
+
+    
+    <ItemGroup>
+      <PackageReference Include="Dapper" Version="2.1.35" />
+      <PackageReference Include="microsoft.data.sqlclient" Version="5.2.1" />
+      <PackageReference Include="microsoft.entityframeworkcore" Version="8.0.6" />
+      <PackageReference Include="microsoft.entityframeworkcore.sqlserver" Version="8.0.6" />
+    </ItemGroup>
   
   </Project>
