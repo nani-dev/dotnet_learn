@@ -24,23 +24,64 @@ namespace SecondCode
 
             DateTime rightNow = dbConnection.QuerySingle<DateTime>(sqlCommand);
             Console.WriteLine(rightNow);
-            
+
+
             Exercise myExercise = new Exercise()
             {
                 ExerciseName = "Bench",
-                Reps = 8, 
+                Reps = 8,
                 Advanced = true,
                 Home = false,
-                RestInSec = 60
+                Rest = 60
             };
-            
+
             // can aslo be changed after
-            myExercise.Reps = 10; 
-            Console.WriteLine("myExercise.ExerciseName: " +myExercise.ExerciseName);
-            Console.WriteLine("myExercise.Reps: " +myExercise.Reps);
-            Console.WriteLine("myExercise.Advanced: " +myExercise.Advanced);
-            Console.WriteLine("myExercise.Home: " +myExercise.Home);
-            Console.WriteLine("myExercise.RestInSec: " +myExercise.RestInSec + "\n");
+            myExercise.Reps = 10;
+
+            string sql = @"INSERT INTO TutorialAppSchema.Exercise (
+                ExerciseName,
+                Reps,
+                Advanced,
+                Home,
+                Rest
+            )   VALUES('"+ myExercise.ExerciseName 
+                         + "','" + myExercise.Reps
+                         + "','" + myExercise.Advanced
+                         + "','" + myExercise.Home
+                         + "','" + myExercise.Rest
+                         +"')";
+            
+            Console.WriteLine(sql);
+            int result = dbConnection.Execute(sql);
+
+            string sqlSelect = @"
+            SELECT 
+                Exercise.ExerciseName,
+                Exercise.Reps,
+                Exercise.Advanced,
+                Exercise.Home,
+                Exercise.Rest
+            FROM TutorialAppSchema.Exercise";
+
+            IEnumerable<Exercise> exercises = dbConnection.Query<Exercise>(sqlSelect);
+
+            foreach (Exercise singleExercise in exercises)
+            {
+                Console.WriteLine
+                    ("'"+ myExercise.ExerciseName 
+                       + "','" + myExercise.Reps
+                       + "','" + myExercise.Advanced
+                       + "','" + myExercise.Home
+                       + "','" + myExercise.Rest
+                       +"'" + "\n" );
+            }
+            
+            //Console.WriteLine("Num. of rows " + result);
+            // Console.WriteLine("myExercise.ExerciseName: " + myExercise.ExerciseName);
+            // Console.WriteLine("myExercise.Reps: " + myExercise.Reps);
+            // Console.WriteLine("myExercise.Advanced: " + myExercise.Advanced);
+            // Console.WriteLine("myExercise.Home: " + myExercise.Home);
+            // Console.WriteLine("myExercise.RestInSec: " + myExercise.RestInSec + "\n");
         }
     }
 }

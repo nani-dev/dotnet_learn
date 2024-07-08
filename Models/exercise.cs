@@ -15,5 +15,5 @@ public class Exercise
     public int Reps { get; set; }
     public bool Advanced { get; set; }
     public bool Home { get; set; }
-    public int RestInSec { get; set; }
+    public int Rest { get; set; }
 }
