@@ -17,8 +17,7 @@ public class inter
         
         DateTime rightNow = dapper.LoadSingleData<DateTime>("SELECT GETDATE()");
         Console.WriteLine(rightNow);
-
-
+        
         var myExercise = new Exercise
         {
             ExerciseName = "Bench",
@@ -66,12 +65,5 @@ public class inter
                  + "','" + myExercise.Home
                  + "','" + myExercise.Rest
                  + "'" + "\n");
-
-        //Console.WriteLine("Num. of rows " + result);
-        // Console.WriteLine("myExercise.ExerciseName: " + myExercise.ExerciseName);
-        // Console.WriteLine("myExercise.Reps: " + myExercise.Reps);
-        // Console.WriteLine("myExercise.Advanced: " + myExercise.Advanced);
-        // Console.WriteLine("myExercise.Home: " + myExercise.Home);
-        // Console.WriteLine("myExercise.RestInSec: " + myExercise.RestInSec + "\n");
     }
 }
