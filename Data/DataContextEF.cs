@@ -22,7 +22,8 @@ namespace SecondCode.Data
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.HasDefaultSchema("TutorialAppSchema");
-            modelBuilder.Entity<Exercise>();
+            modelBuilder.Entity<Exercise>().HasKey(c => c.ExercisePerson);
+                //.HasNoKey();
         }
         
     }

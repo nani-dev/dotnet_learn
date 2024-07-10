@@ -11,6 +11,7 @@ public class Exercise
     }
     */ 
     //The upper text is the same as
+    public int ExercisePerson { get; set; }
     public string ExerciseName { get; set; } = "";
     public int Reps { get; set; }
     public bool Advanced { get; set; }

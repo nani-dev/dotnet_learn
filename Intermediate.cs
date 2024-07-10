@@ -14,6 +14,8 @@ public class inter
     public static void Main(string[] args)
     {
         DataContextDapper dapper = new DataContextDapper(); 
+        DataContextEF entityFramework = new DataContextEF(); 
+
         
         DateTime rightNow = dapper.LoadSingleData<DateTime>("SELECT GETDATE()");
         Console.WriteLine(rightNow);
@@ -27,6 +29,9 @@ public class inter
             Rest = 60
         };
 
+        entityFramework.Add(myExercise);
+        entityFramework.SaveChanges();
+        
         // can aslo be changed after
         myExercise.Reps = 10;
 
@@ -48,6 +53,7 @@ public class inter
 
         var sqlSelect = @"
             SELECT 
+                Exercise.ExercisePerson
                 Exercise.ExerciseName,
                 Exercise.Reps,
                 Exercise.Advanced,
@@ -56,14 +62,29 @@ public class inter
             FROM TutorialAppSchema.Exercise";
 
         IEnumerable<Exercise> exercises = dapper.LoadData<Exercise>(sqlSelect);
-
         foreach (var singleExercise in exercises)
             Console.WriteLine
-            ("'" + myExercise.ExerciseName
+            ("'" + myExercise.ExercisePerson
+                 + "','" + myExercise.ExerciseName
                  + "','" + myExercise.Reps
                  + "','" + myExercise.Advanced
                  + "','" + myExercise.Home
                  + "','" + myExercise.Rest
                  + "'" + "\n");
+        
+        
+        IEnumerable<Exercise>? exercisesEf = entityFramework.Exercise?.ToList();
+        if (exercisesEf != null)
+        {
+            foreach (var singleExercise in exercisesEf)
+                Console.WriteLine
+                ("'" + myExercise.ExercisePerson
+                     + "','" + myExercise.ExerciseName
+                     + "','" + myExercise.Reps
+                     + "','" + myExercise.Advanced
+                     + "','" + myExercise.Home
+                     + "','" + myExercise.Rest
+                     + "'" + "\n");
+        }
     }
 }
